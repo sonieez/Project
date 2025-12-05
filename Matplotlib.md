@@ -89,3 +89,135 @@ plt.show()
 
 #(0,3) (1,8) (2,1) (3, 10) (4, 5) (5, 7)
 ```
+<hr>
+
+📍Markers:
+
+✔️You can use the keyword argument `marker` to emphasize each point with a specified marker
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+ypoints = np.array([3, 8, 1, 10])
+
+plt.plot(ypoints, marker = 'o')
+plt.show()
+```
+Markers:
+
+- 'o'	Circle	
+- '*'	Star	
+- '.'	Point	
+- ','	Pixel	
+- 'x'	X	
+- 'X'	X (filled)	
+- '+'	Plus	
+- 'P'	Plus (filled)	
+- 's'	Square	
+- 'D'	Diamond	
+- 'd'	Diamond (thin)	
+- 'p'	Pentagon	
+- 'H'	Hexagon	
+- 'h'	Hexagon	
+- 'v'	Triangle Down	
+- '^'	Triangle Up	
+- '<'	Triangle Left	
+- '>'	Triangle Right	
+- '1'	Tri Down	
+- '2'	Tri Up	
+- '3'	Tri Left	
+- '4'	Tri Right	
+- '|'	Vline	
+- '_'	Hline
+
+<hr>
+
+✔️Format Strings - `fmt`
+
+You can also use the shortcut string notation parameter to specify the marker.
+
+This parameter is also called `fmt`, and is written with this syntax:
+
+`marker|line|color`
+
+*If you leave out the line value in the fmt parameter, no line will be plotted.
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+ypoints = np.array([3, 8, 1, 10])
+
+plt.plot(ypoints, 'o:r')
+#red circle points
+plt.show()
+```
+Lines:
+
+- '-'	Solid line
+- ':'	Dotted line
+- '--'	Dashed line
+- '-.'	Dashed/dotted line
+
+<hr>
+
+📍Multiple Lines:
+
+You can plot as many lines as you like by simply adding more `plt.plot()` functions:
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+y1 = np.array([3, 8, 1, 10])
+#x1 = [0, 1, 2, 3]
+y2 = np.array([6, 2, 7, 11])
+#x2 = [0, 1, 2, 3]
+
+plt.plot(y1)
+plt.plot(y2)
+
+plt.show()
+```
+<hr>
+
+📍Labels for a Plot:
+
+✔️With Pyplot, you can use the `xlabel()` and `ylabel()` functions to set a label for the x- and y-axis.
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([1, 2, 6, 8])
+y = np.array([3, 8, 1, 10])
+
+plt.plot(x, y)
+
+plt.xlabel("LabelX")
+plt.ylabel("LabelY")
+
+plt.show()
+```
+<hr>
+
+📍Position the Title:
+
+✔️You can use the `loc` parameter in `title()` to position the title.
+
+✔️Legal values are: 'left', 'right', and 'center'. Default value is 'center'.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([1, 2, 6, 8])
+y = np.array([3, 8, 1, 10])
+
+plt.plot(x, y)
+
+plt.title('Title', loc='left')
+plt.xlabel("LabelX")
+plt.ylabel("LabelY")
+
+plt.show()
+```
