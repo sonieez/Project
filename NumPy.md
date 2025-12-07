@@ -1,4 +1,4 @@
-✔️NumPy is a Python library used for working with arrays.
+![ClipWindowsGIF](https://github.com/user-attachments/assets/98332b52-9ec4-4890-8cc2-23c0c00b3c96)✔️NumPy is a Python library used for working with arrays.
 
 ✔️It also has functions for working in domain of linear algebra, fourier transform, and matrices.
 
@@ -175,3 +175,12 @@ newarr = arr.astype('i')
 newarr = arr.astype(int)
 ```
 <hr>
+
+📍NumPy Array Copy vs View:
+
+✔️The main difference between a copy and a view of an array is that the copy is a new array, and the view is just a view of the original array.
+
+✔️The copy owns the data and any changes made to the copy will not affect original array, and any changes made to the original array will not affect the copy.
+
+✔️The view does not own the data and any changes made to the view will affect the original array, and any changes made to the original array will affect the view.
+
