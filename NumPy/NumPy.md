@@ -1,4 +1,4 @@
-![ClipWindowsGIF](https://github.com/user-attachments/assets/98332b52-9ec4-4890-8cc2-23c0c00b3c96)✔️NumPy is a Python library used for working with arrays.
+✔️NumPy is a Python library used for working with arrays.
 
 ✔️It also has functions for working in domain of linear algebra, fourier transform, and matrices.
 
@@ -183,4 +183,36 @@ newarr = arr.astype(int)
 ✔️The copy owns the data and any changes made to the copy will not affect original array, and any changes made to the original array will not affect the copy.
 
 ✔️The view does not own the data and any changes made to the view will affect the original array, and any changes made to the original array will affect the view.
+```python
+arr = np.array([1, 2, 3, 4, 5])
+x = arr.copy()
+arr[0] = 42
+#arr = [42 2 3 4 5]
+#x = [1 2 3 4 5]
 
+arr = np.array([1, 2, 3, 4, 5])
+x = arr.view()
+arr[0] = 42
+#arr = [42 2 3 4 5]
+#x = [42 2 3 4 5]
+
+arr = np.array([1, 2, 3, 4, 5])
+x = arr.view()
+x[0] = 42
+#arr = [42 2 3 4 5]
+#x = [42 2 3 4 5]
+```
+✔️Every NumPy array has the attribute `base` that returns `None` if the array owns the data.
+Otherwise, the `base` attribute refers to the original object:
+```python
+np.array([1, 2, 3, 4, 5])
+
+x = arr.copy()
+y = arr.view()
+
+print(x.base)   #None
+print(y.base)   #[1 2 3 4 5]
+```
+✔️The `copy` returns `None`.
+
+✔️The `view` returns the original array.
