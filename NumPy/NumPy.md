@@ -216,3 +216,14 @@ print(y.base)   #[1 2 3 4 5]
 ✔️The `copy` returns `None`.
 
 ✔️The `view` returns the original array.
+<hr>
+
+📍NumPy Array Shape:
+
+✔️The shape of an array is the number of elements in each dimension.
+
+✔️NumPy arrays have an attribute called `shape` that returns a tuple with each index having the number of corresponding elements:
+```python
+arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+print(arr.shape)    #(2, 4)
+```
