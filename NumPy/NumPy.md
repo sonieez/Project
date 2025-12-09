@@ -316,3 +316,163 @@ for idx, x in np.ndenumerate(arr):
 #(1,) 2
 #(2,) 3
 ```
+<hr>
+
+📍NumPy Joining Array:
+
+✔️Joining means putting contents of two or more arrays in a single array.
+
+✔️We pass a sequence of arrays that we want to join to the `concatenate()` function, along with the axis. If axis is not explicitly passed, it is taken as 0:
+```python
+#axis=0 --> 1-D
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+arr = np.concatenate((arr1, arr2))
+#[1 2 3 4 5]
+
+#axis=1 --> 2-D
+arr1 = np.array([[1, 2], [3, 4]])
+arr2 = np.array([[5, 6], [7, 8]])
+arr = np.concatenate((arr1, arr2), axis=1)
+#[[1 2 5 6]
+#[3 4 7 8]]
+```
+✔️Stacking is same as concatenation, the only difference is that stacking is done along a new axis.
+
+✔️We pass a sequence of arrays that we want to join to the `stack()` method along with the axis. If axis is not explicitly passed it is taken as 0.
+```python
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+arr = np.stack((arr1, arr2), axis=1)
+#[[1 4]
+#[2 5]
+#[3 6]]
+```
+✔️NumPy provides a helper function: `hstack()` to stack along rows:
+```python
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+arr = np.hstack((arr1, arr2))
+#[1 2 3 4 5 6]
+```
+✔️NumPy provides a helper function: `vstack()`  to stack along columns:
+```python
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+arr = np.vstack((arr1, arr2))
+#[[1 2 3]
+#[4 5 6]]
+```
+✔️NumPy provides a helper function: `dstack()` to stack along height, which is the same as depth:
+```python
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+arr = np.dstack((arr1, arr2))
+#[[[1 4]
+# [2 5]
+# [3 6]]]
+```
+<hr>
+
+📍NumPy Splitting Array:
+
+✔️Joining merges multiple arrays into one and Splitting breaks one array into multiple.
+
+✔️We use `array_split()` for splitting arrays, we pass it the array we want to split and the number of splits:
+```pyhton
+arr = np.array([1, 2, 3, 4, 5, 6])
+newarr = np.array_split(arr, 3)
+#[array([1, 2]), array([3, 4]), array([5, 6])]
+```
+✔️The return value of the `array_split()` method is a list containing each of the split as an array.
+
+✔️In addition, you can specify which axis you want to do the split around(they are split along the column):
+```python
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [16, 17, 18]])
+newarr = np.array_split(arr, 3, axis=1)
+```
+✔️An alternate solution is using `hsplit()` opposite of `hstack()`.
+<hr>
+
+📍NumPy Searching Arrays:
+
+✔️You can search an array for a certain value, and return the indexes that get a match.
+To search an array, use the `where()` method:
+```python
+arr = np.array([1, 2, 3, 4, 5, 4, 4])
+x = np.where(arr == 4)
+#(array([3, 5, 6]),)
+```
+✔️There is a method called `searchsorted()` which performs a binary search in the array, and returns the index where the specified value would be inserted to maintain the search order:
+```python
+arr = np.array([6, 7, 8, 9])
+x = np.searchsorted(arr, 7)
+#1
+```
+✔️By default the left most index is returned, but we can give `side='right'` to return the right most index instead:
+```python
+arr = np.array([6, 7, 8, 9])
+x = np.searchsorted(arr, 7, side='right')
+#2
+```
+✔️To search for more than one value, use an array with the specified values:
+```python
+arr = np.array([1, 3, 5, 7])
+x = np.searchsorted(arr, [2, 4, 6])
+#[1 2 3]
+```
+<hr>
+
+📍NumPy Sorting Arrays:
+
+✔️Sorting means putting elements in an ordered sequence.
+
+✔️Ordered sequence is any sequence that has an order corresponding to elements, like numeric or alphabetical, ascending or descending.
+
+✔️The NumPy ndarray object has a function called `sort()`, that will sort a specified array.
+```python
+arr = np.array([3, 2, 0, 1])
+print(np.sort(arr))
+#[0 1 2 3]
+```
+❗This method returns a copy of the array, leaving the original array unchanged.
+<hr>
+
+📍NumPy Filter Array:
+
+✔️Getting some elements out of an existing array and creating a new array out of them is called filtering.
+
+✔️In NumPy, you filter an array using a boolean index list(a list of booleans corresponding to indexes in the array).
+
+✔️If the value at an index is `True` that element is contained in the filtered array, if the value at that index is `False` that element is excluded from the filtered array.
+```python
+arr = np.array([41, 42, 43, 44])
+x = [True, False, True, False]
+newarr = arr[x]
+#[41 43]
+```
+
+✔️We can filter an array like this:
+```python
+#Creating new list to filter array
+arr = np.array([1, 2, 3, 4, 5, 6, 7])
+
+filter_arr = []
+
+for element in arr:
+  if element % 2 == 0:
+    filter_arr.append(True)
+  else:
+    filter_arr.append(False)
+
+newarr = arr[filter_arr]
+```
+But NumPy provides a better way to write this:
+```python
+#Creating filter directly from array
+arr = np.array([1, 2, 3, 4, 5, 6, 7])
+
+filter_arr = arr % 2 == 0
+
+newarr = arr[filter_arr]
+```
